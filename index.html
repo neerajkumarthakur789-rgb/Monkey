@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Device Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+.container{
+    max-width:700px;
+    padding:20px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    width:90%;
+    max-width:400px;
+}
+
+button{
+    padding:10px 20px;
+    margin:8px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.ok{
+    background:#27ae60;
+    color:white;
+}
+
+.disconnect{
+    background:#e74c3c;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Secure Device Portal</h1>
+    <p>
+        Your connection is protected and verified.
+        Please wait while security checks are completed.
+    </p>
+</div>
+
+<div class="modal" id="popup">
+    <div class="modal-content">
+        <h2>Device Linked</h2>
+        <p>Your device has been linked successfully.</p>
+
+        <button class="ok" onclick="okayPressed()">Okay</button>
+        <button class="disconnect" onclick="disconnectPressed()">
+            Disconnect Now
+        </button>
+    </div>
+</div>
+
+<script>
+
+setTimeout(() => {
+    document.getElementById("popup").style.display = "flex";
+}, 12000);
+
+function disconnectPressed(){
+
+    alert("Access Denied");
+
+    setTimeout(() => {
+
+        document.body.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:black;
+            color:#00ff00;
+            padding:20px;
+            font-family:monospace;
+            overflow:auto;">
+            <h1>⚠ SYSTEM COMPROMISED ⚠</h1>
+            <br>
+            <div id="hackText"></div>
+        </div>
+        `;
+
+        let txt=document.getElementById("hackText");
+        let i=0;
+
+        let interval=setInterval(()=>{
+            txt.innerHTML+="ACCESSING FILES... SUCCESS<br>";
+            i++;
+            if(i>40) clearInterval(interval);
+        },100);
+
+        setTimeout(()=>{
+            document.body.innerHTML=`
+            <img
+            src="https://i.pinimg.com/736x/f9/c1/98/f9c198feee2c8506b16ba8f4201cbee6.jpg"
+            style="
+            width:100%;
+            height:100vh;
+            object-fit:contain;
+            background:black;">
+            `;
+        },5000);
+
+    },5000);
+}
+
+function okayPressed(){
+
+    document.body.innerHTML = `
+    <div style="
+        position:fixed;
+        inset:0;
+        background:black;
+        color:red;
+        font-family:monospace;
+        padding:20px;
+        overflow:auto;
+        pointer-events:none;
+        user-select:none;">
+
+        <h1>⚠ DEVICE COMPROMISED ⚠</h1>
+
+        <br>
+
+        <h2>Immediate Action Steps</h2>
+
+        <br>
+
+        <p>
+        If your screen is displaying a lock or warning message:
+        </p>
+
+        <br>
+
+        <p>
+        <b>Force Restart Your Device</b>
+        </p>
+
+        <br>
+
+        <p>
+        Android: Press and hold the Power and Volume Down buttons
+        simultaneously for 10–20 seconds until the screen goes black
+        and the phone restarts.
+        </p>
+
+        <br>
+
+        <p>
+        iPhone: Press and quickly release Volume Up, then Volume Down,
+        then press and hold the Power button until the Apple logo appears.
+        </p>
+
+        <br>
+
+        <p>
+        <b>Turn on Airplane Mode</b><br>
+        Immediately disconnect from Wi-Fi and cellular data.
+        </p>
+
+        <br>
+
+        <p>
+        <b>Uninstall Suspicious Apps</b><br>
+        Go to Settings and delete any unknown or suspicious apps.
+        </p>
+
+        <br><br>
+
+        <h2 style="color:#00ff00;">
+        SCANNING DEVICE...
+        </h2>
+
+    </div>
+    `;
+
+    setTimeout(()=>{
+
+        document.body.innerHTML += `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.8);
+            display:flex;
+            justify-content:center;
+            align-items:center;">
+
+            <div style="
+                background:white;
+                color:black;
+                padding:30px;
+                border-radius:12px;
+                width:90%;
+                max-width:500px;
+                text-align:center;">
+
+                <h1>😂 GOTCHA!</h1>
+
+                <br>
+
+                <h2>
+                Ha ha, Wake UP to reality,<br>
+                Chase goals not girls.
+                </h2>
+
+                <br>
+
+                <p>
+                This was only a prank page.
+                Nothing was hacked.
+                </p>
+
+            </div>
+        </div>
+        `;
+
+    },5000);
+}
+
+</script>
+
+</body>
+</html>
